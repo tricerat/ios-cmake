@@ -151,6 +151,8 @@ if(DEFINED ENV{_IOS_TOOLCHAIN_HAS_RUN})
 endif()
 set(ENV{_IOS_TOOLCHAIN_HAS_RUN} true)
 
+message(STATUS "Running ios toolchain")
+
 # List of supported platform values
 list(APPEND _supported_platforms
         "OS" "OS64" "OS64COMBINED" "SIMULATOR" "SIMULATOR64" "SIMULATORARM64"
@@ -1026,3 +1028,6 @@ macro(find_host_package)
   set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE BOTH)
   set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE BOTH)
 endmacro(find_host_package)
+
+# Tricerat-specific change: Add vcpkg toolchain to this one
+include(./third-party/vcpkg/scripts/buildsystems/vcpkg.cmake)
